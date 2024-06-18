@@ -9,6 +9,16 @@ class Spot extends Model
 {
     use HasFactory;
     
+    public function tags()
+    {   //一つの投稿に複数のタグが付けられる
+        return $this->belongsToMany(Tag::class);
+    }
+    
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+    
     public function country()
     {
         return $this->belongsTo(Country::class);
