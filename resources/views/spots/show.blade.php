@@ -15,7 +15,6 @@
                             <a href="/spots/{{$spot->id}}"}}>{{$spot->name}}</a>
                         </h5>
                         <h5 class='country'>{{$spot->country->name}}</h5>
-                        <h5>more</h5>
                     @endforeach
     </body>
 </html>
