@@ -9,6 +9,15 @@ class Spot extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+    'name',
+    'body',
+    'address',
+    'country_id',
+    'user_id',
+    
+    ];
+    
     public function tags()
     {   //一つの投稿に複数のタグが付けられる
         return $this->belongsToMany(Tag::class);

@@ -27,6 +27,7 @@ Route::get('/spots/{spot}', [PostController::class,'detail']);
 //投稿詳細画面
 
 Route::post('/spots', [PostController::class ,'store']);
+//投稿保存
 
 //タグ、国ごとの絞り込み、自身の投稿表示は後で
 
