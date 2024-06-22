@@ -7,6 +7,7 @@ use App\Models\Area;
 use App\Models\Country;
 use App\Models\Tag;
 use App\Models\Spot;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -26,9 +27,18 @@ class PostController extends Controller
     return view('spots.detail')->with(['spot' => $spot]);
     }
     
-    public function create()
+    public function create(Country $country, User $user)
     {
-        return view('spots.create');
+        return view('spots.create')
+        ->with(['countries' => $country->get()])
+        ->with(['users' => $user->get()]);
+    }
+    
+    public function store(Request $request, Spot $spot)
+    {
+        $input =$request['post'];
+        $spot->fill($input)->save();
+        return redirect('/spots/'.$spot->id);
     }
 
 }
