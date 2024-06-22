@@ -13,10 +13,20 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/', function(){
-    return view('posts.index');
-});
+Route::get('/', [PostController::class, 'index']);
+//トップページ
+
+Route::get('/spots', [PostController::class, 'show']);
+//一覧画面
+
+Route::get('/spots/{spot}', [PostController::class,'detail']);
+//投稿詳細画面
+
+Route::get('/create', [PostController::class ,'create']);
+
+Route::post('/spots', [PostController::class ,'store']);
+
+//タグ、国ごとの絞り込み、自身の投稿表示は後で
+
+

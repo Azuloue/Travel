@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('areas', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 10);
+        Schema::table('tags', function (Blueprint $table) {
+            $table->renameColumn('tags', 'name');
         });
     }
 
@@ -26,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('areas');
+        Schema::table('tags', function (Blueprint $table) {
+            $table->renameColumn('name', 'tags');
+        });
     }
 };
