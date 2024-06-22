@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Area;
 use App\Models\Country;
 use App\Models\Tag;
@@ -27,18 +28,36 @@ class PostController extends Controller
     return view('spots.detail')->with(['spot' => $spot]);
     }
     
-    public function create(Country $country, User $user)
+    public function create(Country $country, User $user, Spot $spot)
     {
         return view('spots.create')
+        ->with(['spot' => $spot])
         ->with(['countries' => $country->get()])
         ->with(['users' => $user->get()]);
     }
     
-    public function store(Request $request, Spot $spot)
+    public function store(PostRequest $request, Spot $spot)
     {
         $input =$request['post'];
         $spot->fill($input)->save();
         return redirect('/spots/'.$spot->id);
+    }
+    
+    public function edit(Spot $spot, Country $country)
+    {  return view('spots.edit',)->with(['spot' => $spot])
+        ->with(['countries' => $country->get()]);
+    }
+    
+    public function update(PostRequest $request, Spot $spot)
+    {   $input_post = $request['post'];
+        $spot->fill($input_post)->save();
+        return redirect ('/spots/' . $spot->id);
+        
+    }
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
     }
 
 }

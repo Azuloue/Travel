@@ -29,6 +29,13 @@ Route::get('/spots/{spot}', [PostController::class,'detail']);
 Route::post('/spots', [PostController::class ,'store']);
 //投稿保存
 
+Route::get('/spots/{spot}/edit', [PostController::class ,'edit']);
+//投稿編集画面
+
+Route::put('/spots/{spot}', [PostController::class ,'update']);
+//投稿編集画面
+
+
 //タグ、国ごとの絞り込み、自身の投稿表示は後で
 
 

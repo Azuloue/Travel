@@ -19,6 +19,9 @@
                     <h3 class="country">{{$spot->user->name}}</h3>
                 </div>
             </div>
+            <div class="edit">
+                <a href="/spots/{{ $spot->id }}/edit">Edit</a>
+            </div>
             <div class="footer">
             <a href="/">Top page</a>
             </div>
