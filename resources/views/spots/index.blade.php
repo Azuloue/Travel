@@ -19,6 +19,7 @@
                     @foreach ($tags as $tag)
                         <h5 class='tag'>{{$tag->name}}</h5>
                     @endforeach
+
     </body>
 </html>
 

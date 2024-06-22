@@ -35,6 +35,8 @@ Route::get('/spots/{spot}/edit', [PostController::class ,'edit']);
 Route::put('/spots/{spot}', [PostController::class ,'update']);
 //投稿編集画面
 
+Route::delete('/spots/{spot}', [PostController::class,'delete']);
+
 
 //タグ、国ごとの絞り込み、自身の投稿表示は後で
 
