@@ -15,7 +15,22 @@
                             <a href="/spots/{{$spot->id}}"}}>{{$spot->name}}</a>
                         </h5>
                         <h5 class='country'>{{$spot->country->name}}</h5>
+                        
+                        <form action="/spots/{{ $spot->id }}" id="form_{{ $spot->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" onclick="deletePost({{ $spot->id }})">delete</button> 
+                        </form>
                     @endforeach
+        `form_${id}`
+        <script>
+            function deletePost(id) {
+            'use strict'
+            if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+            document.getElementById(`form_${id}`).submit();
+        }
+    }
+</script>
     </body>
 </html>
 
