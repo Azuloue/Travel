@@ -27,4 +27,10 @@ class Spot extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function getByLimit(int $limit_count = 5)
+    {
+        return $this->limit($limit_count)->get();
+    }
+    
 }
