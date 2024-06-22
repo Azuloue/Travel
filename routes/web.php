@@ -20,10 +20,11 @@ Route::get('/', [PostController::class, 'index']);
 Route::get('/spots', [PostController::class, 'show']);
 //一覧画面
 
+Route::get('/create', [PostController::class ,'create']);
+//投稿作成画面
+
 Route::get('/spots/{spot}', [PostController::class,'detail']);
 //投稿詳細画面
-
-Route::get('/create', [PostController::class ,'create']);
 
 Route::post('/spots', [PostController::class ,'store']);
 

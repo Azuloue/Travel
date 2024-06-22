@@ -25,4 +25,10 @@ class PostController extends Controller
     {
     return view('spots.detail')->with(['spot' => $spot]);
     }
+    
+    public function create()
+    {
+        return view('spots.create');
+    }
+
 }
