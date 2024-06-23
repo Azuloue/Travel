@@ -17,7 +17,6 @@ class Spot extends Model
     'address',
     'country_id',
     'user_id',
-    'tag_id',
     
     ];
     
