@@ -15,7 +15,8 @@ class PostController extends Controller
     public function index(Area $area, Country $country, Tag $tag,Spot $spot)
     {
     return view('spots.index')->with(['areas' => $area->getByLimit()])
-    ->with(['tags' => $tag->getPaginateByLimit()]);
+    ->with(['tags' => $tag->getPaginateByLimit()])
+    ->with(['countries' => $country->getPaginateByLimit()]);
     }
     
     public function show(Spot $spot)

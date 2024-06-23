@@ -9,14 +9,17 @@
     </head>
     <body>
         <h1>Landmarker</h1>
-        <h2 class='spots'>スポット一覧</h2>
-                    @foreach ($spots as $spot)
-                        <h5 class='name'>
-                            <a href="/spots/{{$spot->id}}"}}>{{$spot->name}}</a>
-                        </h5>
-                        <a href="/countries/{{$spot->country->id}}"}}>
-                        <h5 class='country'>{{$spot->country->name}}</h5>
-                        </a>
+        <h2 class='spots'>
+            国別投稿一覧
+        </h2>
+            @foreach ($spots as $spot)
+                <h5 class='name'>
+                    <a href="/spots/{{$spot->id}}"}}>{{$spot->name}}</a>
+                </h5>
+                
+                    <h5 class='country'>{{$spot->country->name}}</h5>
+            
+                        
                         <h5 class='tags'>
                         {{-- スポットに関連するタグの数だけ繰り返す --}}
                         @foreach($spot->tags as $tag)   
@@ -29,8 +32,9 @@
                             @method('DELETE')
                             <button type="button" onclick="deletePost({{ $spot->id }})">delete</button> 
                         </form>
-                    @endforeach
-                   
+            @endforeach
+            </h5>
+        
         <script>
             function deletePost(id) {
             'use strict'
@@ -39,10 +43,9 @@
             }
             }
         </script>
-        </div>
+
             <div class="footer">
-            <p><a href="/spots/">Back</a></p>    
-            <p></p><a href="/">Top page</a></p>
+            <a href="/">Top page</a>
         </div>
     </body>
 </html>
