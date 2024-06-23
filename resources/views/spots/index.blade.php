@@ -15,9 +15,14 @@
                     @foreach ($areas as $area)
                         <h5 class='area'>{{$area->name}}</h5>
                     @endforeach
+                    @foreach ($countries as $country)
+                    <a href="/countries/{{$country->id}}">
+                        <h5 class='country'>{{$country->name}}</h5>
+                    </a>
+                    @endforeach
                 <h2 class='objective'>目的で探す</h2>
                     @foreach ($tags as $tag)
-                        <h5 class='tag'>{{$tag->name}}</h5>
+                         <a href="/tags/{{$tag->id}}"><h5 class='tag'>{{$tag->name}}</h5></a>
                     @endforeach
 
     </body>

@@ -16,14 +16,22 @@
                     <h3 class="body">{{$spot->body}}</h3>
                     <h3 class="country">{{$spot->country->name}}</h3>
                     <h3 class="address">{{$spot->address}}</h3>
+                    <h3 class="tag">
+                        @foreach($spot->tags as $tag)
+                        {{$tag->name}}
+                        @endforeach
+                    </h3>
                     <h3 class="country">{{$spot->user->name}}</h3>
                 </div>
             </div>
             <div class="edit">
                 <a href="/spots/{{ $spot->id }}/edit">Edit</a>
             </div>
+            
+            
             <div class="footer">
-            <a href="/">Top page</a>
+            <p><a href="/spots/">Back</a></p>
+            <p><a href="/">Top page</a></p>
             </div>
     </body>
 </html>

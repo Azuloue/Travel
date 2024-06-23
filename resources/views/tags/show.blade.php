@@ -9,7 +9,9 @@
     </head>
     <body>
         <h1>Landmarker</h1>
-        <h2 class='spots'>スポット一覧</h2>
+        <h2 class='spots'>
+            タグ投稿一覧
+        </h2>
                     @foreach ($spots as $spot)
                         <h5 class='name'>
                             <a href="/spots/{{$spot->id}}"}}>{{$spot->name}}</a>
@@ -29,6 +31,7 @@
                             @method('DELETE')
                             <button type="button" onclick="deletePost({{ $spot->id }})">delete</button> 
                         </form>
+                        
                     @endforeach
                    
         <script>
@@ -41,8 +44,7 @@
         </script>
         </div>
             <div class="footer">
-            <p><a href="/spots/">Back</a></p>    
-            <p></p><a href="/">Top page</a></p>
+            <a href="/">Top page</a>
         </div>
     </body>
 </html>

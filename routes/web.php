@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\CountryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +39,12 @@ Route::put('/spots/{spot}', [PostController::class ,'update']);
 
 Route::delete('/spots/{spot}', [PostController::class,'delete']);
 
+Route::get('/tags/{tag}', [TagController::class,'show']);
+//タグの絞り込み画面
 
-//タグ、国ごとの絞り込み、自身の投稿表示は後で
+Route::get('/countries/{country}', [CountryController::class,'show']);
+//国での絞り込み画面
+
+//自身の投稿表示は後で
 
 

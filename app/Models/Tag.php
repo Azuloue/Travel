@@ -18,4 +18,10 @@ class Tag extends Model
     {   //タグは複数の投稿に付けられる
         return $this->belongsToMany(Spot::class);
     }
+    
+    public function getByTag(int $limit_count = 5)
+    {
+     return $this->spots()->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+
 }

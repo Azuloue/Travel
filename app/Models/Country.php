@@ -21,4 +21,8 @@ class Country extends Model
     public function area(){
         return $this->belongsTo(Area::class);
     }
+    public function getByCountry(int $limit_count = 5)
+    {
+     return $this->spots()->with('country')->paginate($limit_count);
+    }
 }
