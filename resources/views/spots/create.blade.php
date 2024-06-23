@@ -12,34 +12,53 @@
         <h2 class='spots'>Post a spot</h2>
             <form action="/spots" method="POST">
             @csrf
+
             <div class="name">
+            <p><label>Spot name<br>
                 <input type="text" name="post[name]" placeholder="Spot name" value="{{old('post.name')}}"/>
+            </label></p>
             </div>
             <p class="name__error" style="color:red">{{ $errors->first('post.name') }}</p>
             
-            <br>
             <div class="body">
+                <p><label>Description<br>
                 <textarea name="post[body]" placeholder="Description">{{old('post.body')}}</textarea>
+                </label></p>
             </div>
             <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             
-            <br>
             <div class="address">
+                <p><label>Adress<br>
                 <textarea name="post[address]" placeholder="Address">{{old('post.address')}}</textarea>
+                </label></p>
             </div>
              <p class="address__error" style="color:red">{{ $errors->first('post.address') }}</p>
-            
-            <br>
+        
             <div class="country">
+            <p><label>Country<br>
             <select name="post[country_id]">
-                {{ old('post.country_id') }}
-                <!--国名が記憶されない。spot->country->nameのような書き方にできないか？-->
+                <!--ポスト時にエラーが出た場合、国名がリセットされてしまう。-->
                 @foreach($countries as $country)
                 <option value="{{ $country->id }}">{{ $country->name }}</option>
                 @endforeach
             </select>
+            </p></label>
             <p class="country__error" style="color:red">{{ $errors->first('post.country_id') }}</p>
-            <br>
+            
+            
+            <div class="tag">
+                <p><label>Tag<br>
+                    @foreach($tags as $tag)
+                        <label>
+                            {{-- valueを'$tagのid'に、nameを'配列名[]'に --}}
+                            <input type="checkbox" value="{{ $tag->id }}" name="tags_array[]">
+                                {{$tag->name}}
+                            </input>
+                        </label>
+                    @endforeach    
+                </p></label>
+            <p class="tag__error" style="color:red">{{ $errors->first('tags_array') }}</p>
+            
             
             <select name="post[user_id]">
                 {{ old('post.user_id') }}
