@@ -8,42 +8,63 @@
     </head>
     <body>
         <h1>Landmarker</h1>
-        <h2 class='edit'>Edit my post</h2>
+        <h2 class='edit'>Edit my post...</h2>
             <form action="/spots/{{ $spot->id }}" method="POST">
             @csrf
             @method('PUT')
                 <div class="name">
+                    <p><label>Spot name<br>
                     <input type="text" name="post[name]" value="{{$spot->name}}">
+                    </label></p>
                 </div>
                 <p class="name__error" style="color:red">{{ $errors->first('post.name') }}</p>
-                <br>
                 
                 <div class="body">
                     <!--textareaタグはvalue属性に対応していないため、タグで挟み込む必要がある-->
+                    <p><label>Description<br>
                     <textarea name="post[body]">{{$spot->body}}</textarea>
-                </div>
+                    </label></p>
+                    </div>
                 <!--エラー用-->
                 <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
-                <br>
                 
                 <div class="address">
+                    <p><label>Adress<br>
                     <textarea name="post[address]" >{{$spot->address}}</textarea>
+                    </label></p>
                 </div>
                 <!--エラー用-->
                 <p class="address__error" style="color:red">{{ $errors->first('post.address') }}</p>
-                <br>
                 
                 <div class="country">
-                <select name="post[country_id]">
-                    @foreach($countries as $country)
-                    <!--送信したいのは国名のidなので、valueの中身はidにしている-->
-                    <option value="{{ $country->id }}" >
-                        {{ $country->name }}
-                    </option>
-                    @endforeach
-                </select>
+                    <p><label>Country<br>
+                    <select name="post[country_id]">
+                        @foreach($countries as $country)
+                        <!--送信したいのは国名のidなので、valueの中身はidにしている-->
+                        <option value="{{ $country->id }}" @selected(old('country', $spot->country->name) == $country->name)>
+                            {{ $country->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                    </p></label>
                 <!--エラー用-->
                 <p class="country__error" style="color:red">{{ $errors->first('post.country_id') }}</p>
+                
+                <div class="tag">
+                    <p><label>Tag<br>
+                    @foreach($tags as $tag)
+                        <label>
+                            {{-- valueを'$tagのid'に、nameを'配列名[]'に --}}
+                            <input type="checkbox" value="{{ $tag->id }}" name="tags_array[]">
+                                {{$tag->name}}
+                            </input>
+                        </label>
+                    @endforeach    
+                    </p></label>
+                    <p class="tag__error" style="color:red">{{ $errors->first('tags_array') }}</p>        
+                
+                
+                
                 
                 <input type="submit" value="Update">
             </form>
