@@ -55,17 +55,15 @@
                     @foreach($tags as $tag)
                         <label>
                             {{-- valueを'$tagのid'に、nameを'配列名[]'に --}}
-                            <input type="checkbox" value="{{ $tag->id }}" name="tags_array[]">
-                                {{$tag->name}}
+                            <input type="checkbox" value="{{ $tag->id }}" name="tags_array[]"
+                            {{  $spot->tags->contains($tag->id) ? 'checked="checked"' : '' }}>
+                            {{$tag->name}}
                             </input>
                         </label>
                     @endforeach    
                     </p></label>
                     <p class="tag__error" style="color:red">{{ $errors->first('tags_array') }}</p>        
-                
-                
-                
-                
+
                 <input type="submit" value="Update">
             </form>
             

@@ -10,8 +10,8 @@ class TagController extends Controller
 {
     public function show(Tag $tag)
     {
+        
     return view('tags.show')->with(['spots' => $tag->getByTag()]);
-    
     
     }
         
