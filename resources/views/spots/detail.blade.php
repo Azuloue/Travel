@@ -6,6 +6,10 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+    <x-app-layout>
+        <x-slot name="header">
+            Detail
+        </x-slot>
     <body>
         <h1>Landmarker</h1>
             <h2 class="name">
@@ -34,5 +38,6 @@
             <p><a href="/">Top page</a></p>
             </div>
     </body>
+    </x-app-layout>
 </html>
 

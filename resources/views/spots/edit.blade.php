@@ -6,6 +6,10 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+    <x-app-layout>
+        <x-slot name="header">
+        Edit
+        </x-slot>
     <body>
         <h1>Landmarker</h1>
         <h2 class='edit'>Edit my post...</h2>
@@ -71,5 +75,6 @@
         <a href="/">Top page</a>
         </div>
     </body>
+    </x-app-layout>
 </html>
 
