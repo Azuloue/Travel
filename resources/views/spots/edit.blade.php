@@ -6,6 +6,10 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+    <x-app-layout>
+        <x-slot name="header">
+        Edit
+        </x-slot>
     <body>
         <h1>Landmarker</h1>
         <h2 class='edit'>Edit my post...</h2>
@@ -55,17 +59,15 @@
                     @foreach($tags as $tag)
                         <label>
                             {{-- valueを'$tagのid'に、nameを'配列名[]'に --}}
-                            <input type="checkbox" value="{{ $tag->id }}" name="tags_array[]">
-                                {{$tag->name}}
+                            <input type="checkbox" value="{{ $tag->id }}" name="tags_array[]"
+                            {{  $spot->tags->contains($tag->id) ? 'checked="checked"' : '' }}>
+                            {{$tag->name}}
                             </input>
                         </label>
                     @endforeach    
                     </p></label>
                     <p class="tag__error" style="color:red">{{ $errors->first('tags_array') }}</p>        
-                
-                
-                
-                
+
                 <input type="submit" value="Update">
             </form>
             
@@ -73,5 +75,6 @@
         <a href="/">Top page</a>
         </div>
     </body>
+    </x-app-layout>
 </html>
 

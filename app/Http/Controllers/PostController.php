@@ -59,14 +59,18 @@ class PostController extends Controller
         ->with(['countries' => $country->get()])
         ->with(['tags' => $tag->get()])
         ->with(['tag' => $spot->tag]);
-    
-
-    
     }
     
     public function update(PostRequest $request, Spot $spot)
-    {   $input_post = $request['post'];
+    {  
+        $input_post = $request['post'];
+        $input_tags = $request->tags_array; //tags_arrayはnameで設定した配列名
+        
         $spot->fill($input_post)->save();
+        
+    //attachメソッドを使って中間テーブルにデータを保存
+        $spot->tags()->sync($input_tags); 
+        
         return redirect ('/spots/' . $spot->id);
         
     }

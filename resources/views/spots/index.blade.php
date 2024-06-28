@@ -7,6 +7,10 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
    
     </head>
+    <x-app-layout>
+        <x-slot name="header">
+            Top
+        </x-slot>
     <body>
         <h1>Landmarker</h1>
                 <a href="/create"><h2 class='spots'>Post a spot</h2></a>
@@ -26,5 +30,6 @@
                     @endforeach
 
     </body>
+    </x-app-layout>
 </html>
 

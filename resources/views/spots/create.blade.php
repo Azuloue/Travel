@@ -5,7 +5,10 @@
         <title>Landmarker</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-   
+  <x-app-layout>
+    <x-slot name="header">
+        New post
+     </x-slot>
     </head>
     <body>
         <h1>Landmarker</h1>
@@ -76,6 +79,7 @@
         <div class="footer">
             <a href="/">Top page</a>
         </div>
+    </x-app-layout>
     </body>
 </html>
 
