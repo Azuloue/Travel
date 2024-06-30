@@ -66,7 +66,11 @@
                         </label>
                     @endforeach    
                     </p></label>
-                    <p class="tag__error" style="color:red">{{ $errors->first('tags_array') }}</p>        
+                    <p class="tag__error" style="color:red">{{ $errors->first('tags_array') }}</p>      
+                    
+                <div class="user">
+                   <input type="text" name="post[user_id]" readonly value="{{ Auth::user()->name }}"/>
+                </user>
 
                 <input type="submit" value="Update">
             </form>
