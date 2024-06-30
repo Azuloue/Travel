@@ -49,7 +49,7 @@ Route::get('/countries/{country}', [CountryController::class,'show']);
 
 Route::group(['middleware' => ['auth']], function(){
 
-    Route::get('/create', [PostController::class ,'create']);
+    Route::get('/create', [PostController::class ,'create'])->name('create');
     //投稿作成画面
         
     Route::post('/spots', [PostController::class ,'store']);

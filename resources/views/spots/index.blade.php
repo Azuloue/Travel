@@ -5,15 +5,13 @@
         <title>Landmarker</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-   
     </head>
     <x-app-layout>
         <x-slot name="header">
             Top
         </x-slot>
     <body>
-        <h1>Landmarker</h1>
-                <a href="/create"><h2 class='spots'>Post a spot</h2></a>
+            <a href="/create"><h2 class='spots'>Post a spot</h2></a>
                 <a href="/spots"><h2 class='spots'>スポット一覧</h2></a>
                 <h2 class='countries'>国で探す</h2>
                     @foreach ($areas as $area)

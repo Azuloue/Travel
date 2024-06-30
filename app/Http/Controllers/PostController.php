@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostRequest;
 use App\Models\Area;
 use App\Models\Country;
@@ -22,6 +23,7 @@ class PostController extends Controller
     public function show(Spot $spot)
     {
     return view('spots.show')->with(['spots' => $spot->getByLimit()]);
+    
     }
     
     public function detail(Spot $spot)
@@ -39,12 +41,17 @@ class PostController extends Controller
     }
     
     public function store(PostRequest $request, Spot $spot)
-    {
+    {   
         $input_spot = $request['post'];
         $input_tags = $request->tags_array; //tags_arrayはnameで設定した配列名
         
+        $image = $request->image;
+        $path = Storage::disk('s3')->put('/', $image, 'public');
+
         //先にpostsテーブルにデータを保存
-        $spot->fill($input_spot)->save();
+        $spot->fill($input_spot);
+        $spot->image_path = Storage::disk('s3')->url($path);
+        $spot->save();
         
         //attachメソッドを使って中間テーブルにデータを保存
         $spot->tags()->attach($input_tags); 

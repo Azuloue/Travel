@@ -25,7 +25,9 @@
                         {{$tag->name}}
                         @endforeach
                     </h3>
-                    <h3 class="country">{{$spot->user->name}}</h3>
+                    <h3 class="user">posted by {{$spot->user->name}}</h3>
+                    <h3 class="image"><img src="{{$spot->image_path}}"></h3>
+                  
                 </div>
             </div>
             <div class="edit">

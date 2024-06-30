@@ -6,14 +6,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
   <x-app-layout>
-    <x-slot name="header">
-        New post
-     </x-slot>
     </head>
     <body>
-        <h1>Landmarker</h1>
-        <h2 class='spots'>Post a spot</h2>
-            <form action="/spots" method="POST">
+        <form action="/spots" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="name">
@@ -31,7 +26,7 @@
             <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             
             <div class="address">
-                <p><label>Adress<br>
+                <p><label>Address<br>
                 <textarea name="post[address]" placeholder="Address">{{old('post.address')}}</textarea>
                 </label></p>
             </div>
@@ -40,15 +35,13 @@
             <div class="country">
             <p><label>Country<br>
             <select name="post[country_id]">
-                <!--ポスト時にエラーが出た場合、国名がリセットされてしまう。-->
                 @foreach($countries as $country)
                 <option value="{{ $country->id }}">{{ $country->name }}</option>
                 @endforeach
             </select>
             </p></label>
             <p class="country__error" style="color:red">{{ $errors->first('post.country_id') }}</p>
-            
-            
+ 
             <div class="tag">
                 <p><label>Tag<br>
                     @foreach($tags as $tag)
@@ -61,16 +54,16 @@
                     @endforeach    
                 </p></label>
             <p class="tag__error" style="color:red">{{ $errors->first('tags_array') }}</p>
-            
-            
-            <select name="post[user_id]">
-                {{ old('post.user_id') }}
-                @foreach($users as $user)
-                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-            </select>
-            <p class="user__error" style="color:red">{{ $errors->first('post.user_id') }}</p>
-            
+            <!--画像-->
+            <div>
+                <p><label>Image<br>
+                <input type="file" name="image">
+                </label></p>
+            </div>
+            <h4>
+                post as {{Auth::user()->name}}
+                <input type="hidden" name="post[user_id]" readonly value="{{ Auth::user()->id }}"/>
+            </h4>
             <div>
             <br>
             <input type="submit" value="post"/>
