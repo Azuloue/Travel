@@ -9,6 +9,7 @@
                         <img src="{{asset('img/logo.png')}}" width="50" height="50">
                     <!--<x-application-logo class="block h-9 w-auto fill-current text-gray-800" />-->
                     </a>
+                    <p class="text-zinc-500">Landmarker</p>
                 </div>
 
                 <!-- Navigation Links -->
@@ -16,9 +17,7 @@
                     <!--<x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">-->
                     <!--    {{ __('Dashboard') }}-->
                     <!--</x-nav-link>-->
-                    <x-nav-link :href="route('list')" :active="request()->routeIs('list')">
-                        {{ __('List') }}
-                    </x-nav-link>
+                    
                     @auth
                     <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
                         {{ __('Post a spot') }}
@@ -63,9 +62,9 @@
                 @endauth
                 
                 @guest
-                    <div class="flex gap-x-4">
-                        <a href="{{ route('login') }}">{{ __('Log in') }}</a>
-                        <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <div class="flex gap-x-4 text-zinc-500">
+                        <a href="{{ route('login') }}" class="text-sm">{{ __('Log in') }}</a>
+                        <a href="{{ route('register')}}" class="ml-4 text-sm">{{ __('Register') }}</a>
                     </div>
                 @endguest
             </div>

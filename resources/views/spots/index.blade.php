@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Landmarker</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>Landmarker</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+</head>
     <x-app-layout>
-        <x-slot name="header">
-            Top
-        </x-slot>
     <body>
-            <a href="/create"><h2 class='spots'>Post a spot</h2></a>
-                <a href="/spots"><h2 class='spots'>スポット一覧</h2></a>
-                <h2 class='countries'>国で探す</h2>
-                    @foreach ($areas as $area)
-                        <h5 class='area'>{{$area->name}}</h5>
+        <div dir="rtl" class="my-4 ms-8">
+        <span class="relative">
+        <button class="h-12 overflow-hidden rounded bg-zinc-400 px-5 py-2.5 text-white transition-all duration-300 hover:bg-zinc-500 hover:ring-2 hover:ring-zinc-500 hover:ring-offset-2">
+        <a href="/spots"><p >View all the spots</p></a>
+        </button>
+        </span>
+        </div>
+        
+        <div class="my-4 ml-4 mr-10">
+            <h2 class="border-b-2 border-zinc-200">Search by country</h2>
+        </div>
+        
+        <div>
+        <ul>
+            @foreach ($areas as $area)
+            <li class="indent-8">
+                {{$area->name}}
+            <ul>
+                <li class="indent-16">
+                    @foreach($area->countries as $country)
+                    <a class="mr-4"href="/countries/{{$country->id}}">
+                    {{$country->name}}
                     @endforeach
-                    @foreach ($countries as $country)
-                    <a href="/countries/{{$country->id}}">
-                        <h5 class='country'>{{$country->name}}</h5>
                     </a>
-                    @endforeach
-                <h2 class='objective'>目的で探す</h2>
+                </li>
+            </ul>
+            </li>
+            @endforeach
+        </ul>
+        </div>
+        
+        <div class="my-4 ml-4 mr-10">
+            <h2 class="border-b-2 border-zinc-200">Search by category</h2>
+        </div>
+            
+                <ul>
+                    <li class="indent-8">
                     @foreach ($tags as $tag)
-                         <a href="/tags/{{$tag->id}}"><h5 class='tag'>{{$tag->name}}</h5></a>
+                         <a href="/tags/{{$tag->id}}"><span class="mr-4">{{$tag->name}}</span></a>
                     @endforeach
-
+                    </li>
+                </ul>
+            
     </body>
     </x-app-layout>
 </html>

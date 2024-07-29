@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 use App\Models\Area;
 use App\Models\Country;
@@ -13,14 +14,15 @@ use App\Models\User;
 
 class PostController extends Controller
 {
-    public function index(Area $area, Country $country, Tag $tag,Spot $spot)
+    public function index(Area $area, Tag $tag,Spot $spot)
     {
-    return view('spots.index')->with(['areas' => $area->getByLimit()])
-    ->with(['tags' => $tag->getPaginateByLimit()])
-    ->with(['countries' => $country->getPaginateByLimit()]);
+    return view('spots.index')
+    ->with(['areas' => $area->getByLimit()])
+    ->with(['tags' => $tag->getPaginateByLimit()]);
+    
     }
     
-    public function show(Spot $spot)
+    public function show(Spot $spot, User $user)
     {
     return view('spots.show')->with(['spots' => $spot->getByLimit()]);
     
@@ -42,6 +44,7 @@ class PostController extends Controller
     
     public function store(PostRequest $request, Spot $spot)
     {   
+        
         $input_spot = $request['post'];
         $input_tags = $request->tags_array; //tags_arrayはnameで設定した配列名
         

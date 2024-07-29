@@ -16,8 +16,6 @@ use App\Http\Controllers\CountryController;
 |
 */
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -35,8 +33,6 @@ Route::get('/', [PostController::class, 'index'])->name('top');
 
 Route::get('/spots', [PostController::class, 'show'])->name('list');
 //一覧画面
-
-
 
 Route::get('/spots/{spot}', [PostController::class,'detail']);
 //投稿詳細画面
