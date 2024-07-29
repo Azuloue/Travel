@@ -12,7 +12,7 @@ class TagController extends Controller
     public function show(Tag $tag)
     {
         
-    return view('tags.show')->with(['spots' => $tag->getByTag()]);
+    return view('tags.show',['tagname'=>$tag->name])->with(['spots' => $tag->getByTag()]);
     
     }
         

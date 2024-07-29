@@ -6,6 +6,14 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        
+        <head>
+        	<meta charset="UTF-8" />
+        	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        	<link href="/css/app.css" rel="stylesheet">
+        	@vite('resources/css/app.css')
+        	
+        </head>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -28,7 +36,7 @@
             <!--@endif-->
 
             <!-- Page Content -->
-            <main>
+            <main class="text-zinc-500">
                 {{ $slot }}
             </main>
         </div>
