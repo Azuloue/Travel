@@ -18,10 +18,10 @@ class AreaSeeder extends Seeder
         DB::statement('ALTER TABLE areas AUTO_INCREMENT = 1');
         
         DB::table('areas')->insert([
-            'areas' => 'アジア',
+            'name' => 'アジア',
         ]);
         DB::table('areas')->insert([
-            'areas' => 'ヨーロッパ',
+            'name' => 'ヨーロッパ',
         ]);
     }
 }

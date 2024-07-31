@@ -18,31 +18,31 @@ class TagSeeder extends Seeder
         DB::statement('ALTER TABLE tags AUTO_INCREMENT = 1');
         
         DB::table('tags')->insert([
-            'tags' => 'ショッピング',
+            'name' => 'ショッピング',
         ]);
         DB::table('tags')->insert([
-            'tags' => 'グルメ',
+            'name' => 'グルメ',
         ]);
         DB::table('tags')->insert([
-            'tags' => 'アート',
+            'name' => 'アート',
         ]);
         DB::table('tags')->insert([
-            'tags' => '動物',
+            'name' => '動物',
         ]);
         DB::table('tags')->insert([
-            'tags' => 'モニュメント',
+            'name' => 'モニュメント',
         ]);
         DB::table('tags')->insert([
-            'tags' => '自然',
+            'name' => '自然',
         ]);
         DB::table('tags')->insert([
-            'tags' => '歴史',
+            'name' => '歴史',
         ]);
         DB::table('tags')->insert([
-            'tags' => '写真映え',
+            'name' => '写真映え',
         ]);
         DB::table('tags')->insert([
-            'tags' => 'リラクゼーション',
+            'name' => 'リラクゼーション',
         ]);
     }
 }
