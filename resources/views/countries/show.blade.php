@@ -14,31 +14,32 @@
                 Search by <span class="text-amber-600">{{ $countryname }}</span> 
             </p>
             </div>
-            <div class="ml-4">
-                <div class="font-bold">
+            <div>
+                
                 @foreach ($spots as $spot)
-                <a href="/spots/{{$spot->id}}" class="font-bold"}} class="font-bold">{{$spot->name}}</a>
-                </div>
-                    <div class="flex items-center">
-                        <p class="text-zinc-300 text-xs mr-4">Country</p>
-                        <a href="/countries/{{$spot->country->id}}"}}>{{$spot->country->name}}</a>
-                    </div>
+                    <a href="/spots/{{$spot->id}}" class="font-bold ml-4"}} class="font-bold">{{$spot->name}}</a>
                     
+                    <!--"Country"の文字列-->
+                    <div class="flex items-center">
+                            <p class="text-zinc-300 text-xs mr-4 ml-4">Country</p>
+                            <a href="/countries/{{$spot->country->id}}"}}>{{$spot->country->name}}</a>
+                    </div>
+                    <!--"Category"の文字列-->
                     <div class='flex items-center mb-2'>
-                        <p class="text-zinc-300 text-xs mr-2 ">Category</p>
-                        <!--スポットに関連するタグの数だけ繰り返す-->
+                        <p class="text-zinc-300 text-xs mr-2 ml-4">Category</p>
+                            <!--スポットに関連するタグの数だけ繰り返す-->
                         @foreach($spot->tags as $tag)   
                         <a href="/tags/{{$tag->id}}" class="mr-2">{{ $tag->name }}</a>
                         @endforeach
                     </div>  
-                    <!--自分の投稿のみ削除ボタンを表示する        -->
-                    @if (Auth::id() == $spot->user_id)
-                        <form action="/spots/{{ $spot->id }}" id="form_{{ $spot->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button class="text-xs rounded bg-orange-500 text-white px-1 py-0.5" type="button" onclick="deletePost({{ $spot->id }})">delete</button> 
-                        </form>
-                    @endif
+                        <!--自分の投稿のみ削除ボタンを表示する        -->
+                        @if (Auth::id() == $spot->user_id)
+                            <form action="/spots/{{ $spot->id }}" id="form_{{ $spot->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="text-xs rounded bg-orange-500 text-white px-1 py-0.5 ml-4" type="button" onclick="deletePost({{ $spot->id }})">delete</button> 
+                            </form>
+                        @endif
                 @endforeach
             </div>
         

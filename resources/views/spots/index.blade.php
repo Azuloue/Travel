@@ -8,15 +8,20 @@
 </head>
     <x-app-layout>
     <body>
-        <div dir="rtl" class="my-4 ms-8">
+        <div class="my-4 ml-4 flex justify-between">
+            <div class="flex-col">
+            <h2 class="text-4xl">Welcome.</h2>
+            <h2 class="mb-2">You could search sightseeing spots on Landmarker.<br>Click each country or category.</h2>
+            </div>
         <span class="relative">
-        <button class="h-12 overflow-hidden rounded bg-zinc-400 px-5 py-2.5 text-white transition-all duration-300 hover:bg-zinc-500 hover:ring-2 hover:ring-zinc-500 hover:ring-offset-2">
+        <button class="h-12 overflow-hidden rounded bg-zinc-400 px-5 py-2.5 text-white transition-all duration-300 hover:bg-zinc-500 hover:ring-2 hover:ring-zinc-500 hover:ring-offset-2 mr-10">
         <a href="/spots"><p >View all the spots</p></a>
         </button>
         </span>
         </div>
         
         <div class="my-4 ml-4 mr-10">
+
             <h2 class="border-b-2 border-zinc-200">Search by country</h2>
         </div>
         
@@ -42,7 +47,6 @@
         <div class="my-4 ml-4 mr-10">
             <h2 class="border-b-2 border-zinc-200">Search by category</h2>
         </div>
-            
                 <ul>
                     <li class="indent-8">
                     @foreach ($tags as $tag)
